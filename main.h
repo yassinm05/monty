@@ -41,5 +41,5 @@ extern stack_t *head;
 void handle_file(char *file_name);
 void process_file(FILE *fd);
 void process_opcode(char *opcode, char *value, int ln, int format);
-void call_fun(op_func func, char *op, char *val, int ln, int format)
+void call_fun(op_func func, char *op, char *val, int ln, int format);
 #endif
