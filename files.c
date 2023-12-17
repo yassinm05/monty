@@ -106,6 +106,7 @@ void call_fun(op_func func, char *op, char *val, int ln, int format)
 {
 	stack_t *node;
 	int flag = 1;
+	int value;
 
 	if (strcmp(op, "push") == 0)
 	{
@@ -115,6 +116,12 @@ void call_fun(op_func func, char *op, char *val, int ln, int format)
 			flag = -1;
 		}
 		if (val == NULL)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", ln);
+			exit(EXIT_FAILURE);
+		}
+		value = atoi(val);
+		if (value == 0 && val[0] != '0')
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", ln);
 			exit(EXIT_FAILURE);
