@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MONTY_H
+#define MONTY_H
 
 #define _GNU_SOURCE
 #include <stdio.h>
@@ -19,9 +19,9 @@
  */
 typedef struct stack_s
 {
-	int n;
-	struct stack_s *prev;
-	struct stack_s *next;
+		int n;
+			struct stack_s *prev;
+				struct stack_s *next;
 } stack_t;
 
 /**
@@ -34,8 +34,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+		char *opcode;
+			void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 extern stack_t *head;
@@ -53,4 +53,5 @@ void swap_nodes(stack_t **stack, unsigned int line_number);
 void add_nodes(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 stack_t *create_node(int n);
+
 #endif
