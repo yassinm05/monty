@@ -44,6 +44,7 @@ stack_t *create_node(int n)
 void free_nodes(void)
 {
 	stack_t *node;
+
 	if (head == NULL)
 	{
 		return;

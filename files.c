@@ -1,5 +1,4 @@
 #include "monty.h"
-stack_t *head = NULL;
 
 /**
  * handle_file - open and handle the file
@@ -128,7 +127,6 @@ void call_fun(op_func func, char *op, char *val, int ln, int format)
 		node = create_node(atoi(val) * flag);
 		if (format == 0)
 			func(&node, ln);
-		
 	}
 	else
 		func(&head, ln);
