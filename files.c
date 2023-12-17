@@ -1,5 +1,5 @@
 #include "monty.h"
-
+stack_t *head = NULL;
 /**
  * handle_file - open and handle the file
  * @file_name: the file name
