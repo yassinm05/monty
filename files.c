@@ -106,7 +106,6 @@ void call_fun(op_func func, char *op, char *val, int ln, int format)
 {
 	stack_t *node;
 	int flag = 1;
-	int i;
 
 	if (strcmp(op, "push") == 0)
 	{
@@ -120,17 +119,10 @@ void call_fun(op_func func, char *op, char *val, int ln, int format)
 			fprintf(stderr, "L%d: usage: push integer\n", ln);
 			exit(EXIT_FAILURE);
 		}
-		for (i = 0; val[i] != '\0'; i++)
-		{
-			if (isdigit(val[i]) == 0)
-			{
-				fprintf(stderr, "L%d: usage: push integer\n", ln);
-				exit(EXIT_FAILURE);
-			}
-			node = create_node(atoi(val) * flag);
-			if (format == 0)
-				func(&node, ln);
-		}
+		node = create_node(atoi(val) * flag);
+		if (format == 0)
+			func(&node, ln);
+		
 	}
 	else
 		func(&head, ln);
