@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	handle_file(argv[1]);
+	free_nodes();
 	return (0);
 }
 /**
@@ -34,4 +35,26 @@ stack_t *create_node(int n)
 	new_node->next = NULL;
 	new_node->n = n;
 	return (new_node);
+}
+/**
+ * free_nodes - free the nodes in stack
+ *
+ * Return: nothing
+ */
+void free_nodes(void)
+{
+	stack_t *node;
+	if (head == NULL)
+	{
+		return;
+	}
+	else
+	{
+		while (head != NULL)
+		{
+			node = head;
+			head = head->next;
+			free(node);
+		}
+	}
 }

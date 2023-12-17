@@ -1,5 +1,4 @@
 #include "monty.h"
-
 /**
  * push_to_stack - push a value to the stack
  * @new_node: is a param
