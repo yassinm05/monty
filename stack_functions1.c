@@ -85,13 +85,13 @@ void print_top(stack_t **stack, unsigned int line_number)
 {
 	if (stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't print, stack empty\n",
+		fprintf(stderr, "L%d: can't pint, stack empty\n",
 			line_number);
 		exit(EXIT_FAILURE);
 	}
 	if (*stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't print, stack empty\n",
+		fprintf(stderr, "L%d: can't pint, stack empty\n",
 			line_number);
 		exit(EXIT_FAILURE);
 	}
