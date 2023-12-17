@@ -14,7 +14,7 @@ void handle_file(char *file_name)
 		fprintf(stderr, "Error: Can't open file %s\n", file_name);
 		exit(EXIT_FAILURE);
 	}
-	read_line(fd);
+	process_file(fd);
 	fclose(fd);
 }
 
@@ -47,7 +47,7 @@ void process_file(FILE *fd)
 		else if (strcmp(op, "queue") == 0)
 			format = 1;
 		else
-			find_fun(op, value, line_num, format);
+			process_opcode(op, value, line_num, format);
 	}
 	free(str);
 }
@@ -77,7 +77,7 @@ void process_opcode(char *opcode, char *value, int ln, int format)
 
 	if (opcode[0] == '#')
 		return;
-	for (flag = 1, i = 0; func_list.opcode != NULL; i++)
+	for (flag = 1, i = 0; func_list->opcode != NULL; i++)
 	{
 		if (strcmp(opcode, func_list[i].opcode) == 0)
 		{
@@ -118,7 +118,7 @@ void call_fun(op_func func, char *op, char *val, int ln, int format)
 			fprintf(stderr, "L%d: usage: push integer\n", ln);
 			exit(EXIT_FAILURE);
 		}
-		for (i = 0; val[i] != '\0', i++)
+		for (i = 0; val[i] != '\0'; i++)
 		{
 			if (isdigit(val[i]) == 0)
 			{
@@ -128,8 +128,6 @@ void call_fun(op_func func, char *op, char *val, int ln, int format)
 			node = create_node(atoi(val) * flag);
 			if (format == 0)
 				func(&node, ln);
-			if (format == 1)
-				push_to_queue(&node, ln);
 		}
 	}
 	else

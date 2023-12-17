@@ -1,12 +1,13 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-
+#define _GNU_SOURCE
 #include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
 #include <stdarg.h>
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -38,8 +39,18 @@ typedef struct instruction_s
 } instruction_t;
 
 extern stack_t *head;
+typedef void (*op_func)(stack_t **, unsigned int);
+
 void handle_file(char *file_name);
 void process_file(FILE *fd);
 void process_opcode(char *opcode, char *value, int ln, int format);
 void call_fun(op_func func, char *op, char *val, int ln, int format);
+void push_to_stack(stack_t **new_node, unsigned int line_number);
+void display(stack_t **stack, unsigned int line_number);
+void pop_from_stack(stack_t **stack, unsigned int line_number);
+void print_top(stack_t **stack, unsigned int line_number);
+void swap_nodes(stack_t **stack, unsigned int line_number);
+void add_nodes(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+stack_t *create_node(int n);
 #endif
